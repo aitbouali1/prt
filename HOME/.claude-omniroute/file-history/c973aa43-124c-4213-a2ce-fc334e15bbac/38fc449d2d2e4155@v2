@@ -1,0 +1,23 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## Commands
+
+- `npm run dev` — start the Vite dev server with HMR.
+- `npm run build` — production build to `dist/`.
+- `npm run preview` — serve the built `dist/` locally to verify a production build.
+
+No test runner or linter is configured.
+
+## Architecture
+
+Vanilla JavaScript Vite app (no framework). ES modules throughout (`"type": "module"`).
+
+- `index.html` — document shell; loads `/src/main.js` as the entry module and mounts everything into `<div id="app">`.
+- `src/main.js` — renders the page by assigning an HTML template string to `#app`'s `innerHTML`, then calls `setupCounter` to wire the click handler onto `#counter`.
+- `src/counter.js` — exports `setupCounter(element)`, a self-contained click-counter module. This is the pattern for new interactive widgets: export an init function that takes a DOM element.
+- `src/style.css` — imported by `main.js` (Vite handles CSS as a module). Theming is done with CSS custom properties on `:root` and overridden under `@media (prefers-color-scheme: dark)`. Use these tokens rather than hardcoded colors.
+- Assets live in `src/assets/` and are imported as URLs (`import logo from './x.svg'`). Shared SVG icons are in `public/icons.svg` and referenced via `<use href="/icons.svg#id">`; `public/` is served at the root path unchanged.
+
+The app is a single client-rendered page — there is no router, backend, or build-time data fetching.

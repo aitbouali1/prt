@@ -1,0 +1,36 @@
+import { motion } from "framer-motion"
+
+// Brief page-load transition overlay. Fades out once mounted.
+export default function PageLoader() {
+  return (
+    <motion.div
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-[color:var(--color-base)]"
+      initial={{ opacity: 1 }}
+      animate={{ opacity: 0 }}
+      transition={{ duration: 0.6, delay: 0.2, ease: "easeInOut" }}
+    >
+      <div className="flex flex-col items-center gap-5">
+        <div className="relative h-14 w-14">
+          <motion.span
+            className="absolute inset-0 rounded-full border-2 border-[color:var(--color-accent)]/30"
+            animate={{ scale: [0.8, 1.5, 0.8], opacity: [0.6, 0, 0.6] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeOut" }}
+          />
+          <motion.span
+            className="absolute inset-0 rounded-full border-2 border-t-[color:var(--color-accent-2)] border-r-transparent border-b-transparent border-l-transparent"
+            animate={{ rotate: 360 }}
+            transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+          />
+        </div>
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.2 }}
+          className="font-[family-name:var(--font-display)] text-sm font-semibold tracking-[0.3em] text-muted"
+        >
+          LOADING
+        </motion.p>
+      </div>
+    </motion.div>
+  )
+}

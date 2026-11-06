@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Mohamed Ait Bouali — Junior Data Analyst. Management graduate specializing in Data Analytics, business intelligence, and financial data. Turning data into insights with Python, SQL, Excel, and Power BI."
+    />
+    <meta name="author" content="Mohamed Ait Bouali" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Mohamed Ait Bouali — Junior Data Analyst" />
+    <meta
+      property="og:description"
+      content="Management graduate passionate about Data Analytics, business intelligence, and financial data."
+    />
+
+    <title>Mohamed Ait Bouali — Junior Data Analyst</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Static form so Netlify can detect the contact form at build time.
+         The React <Contact> form mirrors these field names and posts to "/". -->
+    <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="contact" />
+      <input name="name" />
+      <input name="email" />
+      <input name="subject" />
+      <textarea name="message"></textarea>
+    </form>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

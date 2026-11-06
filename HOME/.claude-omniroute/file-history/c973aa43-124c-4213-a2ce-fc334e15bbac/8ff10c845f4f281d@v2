@@ -1,0 +1,87 @@
+import { motion } from "framer-motion"
+import { Mail, ArrowUpRight } from "lucide-react"
+import { Github, Linkedin } from "./BrandIcons"
+import SectionHeading from "./SectionHeading"
+import { profile } from "../data/profile"
+import { container, item } from "../lib/motion"
+
+const cards = [
+  {
+    icon: Linkedin,
+    label: "LinkedIn",
+    value: "Connect with me",
+    href: profile.linkedin,
+    accent: "text-[color:var(--color-accent-2)]",
+    highlight: true, // LinkedIn is the priority CTA per spec
+  },
+  {
+    icon: Github,
+    label: "GitHub",
+    value: "See my code",
+    href: profile.github,
+    accent: "text-text",
+  },
+  {
+    icon: Mail,
+    label: "Email",
+    value: profile.email,
+    href: `mailto:${profile.email}`,
+    accent: "text-[color:var(--color-accent-3)]",
+  },
+]
+
+export default function Connect() {
+  return (
+    <section id="connect" className="relative py-24 sm:py-32">
+      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+        <SectionHeading
+          eyebrow="Professional Presence"
+          title="Explore My Work"
+          subtitle="The best way to see what I can do is to look at where I share it. Let's connect."
+        />
+
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+          className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+        >
+          {cards.map((c) => (
+            <motion.a
+              key={c.label}
+              href={c.href}
+              target={c.href.startsWith("mailto") ? undefined : "_blank"}
+              rel="noreferrer"
+              variants={item}
+              whileHover={{ y: -8 }}
+              className={`glass-card glow-ring group flex flex-col gap-5 rounded-2xl p-7 ${
+                c.highlight ? "ring-1 ring-[color:var(--color-accent-2)]/40" : ""
+              }`}
+            >
+              <div className="flex items-center justify-between">
+                <span className={`flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-[color:var(--color-accent)]/15 to-[color:var(--color-accent-2)]/15 ${c.accent} transition-transform group-hover:scale-110`}>
+                  <c.icon className="h-7 w-7" />
+                </span>
+                <ArrowUpRight className="h-5 w-5 text-muted transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-text" />
+              </div>
+              <div>
+                <p className="text-xs font-700 uppercase tracking-[0.18em] text-muted">
+                  {c.label}
+                </p>
+                <p className="mt-1 font-[family-name:var(--font-display)] text-lg font-700 text-text">
+                  {c.value}
+                </p>
+              </div>
+              {c.highlight && (
+                <span className="mt-auto inline-flex w-fit rounded-full bg-[color:var(--color-accent-2)]/10 px-3 py-1 text-[11px] font-600 text-[color:var(--color-accent-2)]">
+                  Best way to reach me
+                </span>
+              )}
+            </motion.a>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  )
+}

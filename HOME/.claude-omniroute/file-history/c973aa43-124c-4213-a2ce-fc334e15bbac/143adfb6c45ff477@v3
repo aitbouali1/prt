@@ -1,0 +1,91 @@
+import { motion } from "framer-motion"
+import { GraduationCap, Calendar, BookOpen, MapPin } from "lucide-react"
+import SectionHeading from "./SectionHeading"
+import { education } from "../data/education"
+import { container, item } from "../lib/motion"
+
+export default function Education() {
+  return (
+    <section id="education" className="relative py-24 sm:py-32">
+      <div className="mx-auto max-w-4xl px-5 sm:px-8">
+        <SectionHeading
+          eyebrow="Education"
+          title="Education & Academic Background"
+          subtitle="My academic foundation in Management and Applied Finance."
+        />
+
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+          className="mt-14"
+        >
+          {education.map((e, i) => (
+            <motion.div
+              key={i}
+              variants={item}
+              className="glass-card glow-ring relative rounded-2xl p-6 sm:p-8"
+            >
+              <span className="absolute -left-[7px] top-8 hidden h-3.5 w-3.5 rounded-full bg-gradient-to-br from-[color:var(--color-accent-2)] to-[color:var(--color-accent)] sm:block" />
+              <span className="absolute left-0 top-12 hidden h-[calc(100%-3rem)] w-px bg-gradient-to-b from-[color:var(--color-accent)]/40 to-transparent sm:block" />
+
+              <div className="flex items-start gap-4">
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[color:var(--color-accent)]/20 to-[color:var(--color-accent-2)]/20 text-[color:var(--color-accent-2)]">
+                  <GraduationCap className="h-6 w-6" />
+                </span>
+                <div className="flex flex-1 flex-col gap-3">
+                  <h3 className="font-[family-name:var(--font-display)] text-xl font-bold text-text">
+                    {e.degree}
+                  </h3>
+                  <p className="text-sm font-medium text-[color:var(--color-accent-3)]">
+                    {e.detail}
+                  </p>
+
+                  <div className="flex flex-wrap gap-4 text-xs text-muted">
+                    {e.institution && (
+                      <span className="inline-flex items-center gap-1.5">
+                        <MapPin className="h-3.5 w-3.5" />
+                        {e.institution}
+                      </span>
+                    )}
+                    {e.year && (
+                      <span className="inline-flex items-center gap-1.5">
+                        <Calendar className="h-3.5 w-3.5" />
+                        {e.year}
+                      </span>
+                    )}
+                  </div>
+
+                  {e.subjects?.length > 0 && (
+                    <div className="mt-2">
+                      <p className="mb-2 flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-muted">
+                        <BookOpen className="h-3.5 w-3.5" /> Relevant subjects
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {e.subjects.map((s) => (
+                          <span
+                            key={s}
+                            className="rounded-md bg-white/5 px-2.5 py-1 text-xs font-medium text-text"
+                          >
+                            {s}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {!e.institution && !e.year && (
+                    <p className="text-xs italic text-muted/70">
+                      Editable placeholder — add your university name, graduation year, and subjects in <code className="rounded bg-white/10 px-1.5 py-0.5 font-mono text-[11px]">src/data/education.js</code>.
+                    </p>
+                  )}
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  )
+}

@@ -1,0 +1,451 @@
+Act as a world-class UI/UX designer, senior frontend developer, and personal branding expert.
+
+Your task is to design and develop a stunning, modern, fully responsive personal portfolio website for a young professional specializing in Data Analytics.
+
+1. Personal Information
+
+Full Name: MOHAMED AIT BOUALI
+
+Professional Title: Junior Data Analyst | Management Graduate
+
+Professional Background:
+
+Graduated in Management.
+
+Specialized in Management and Applied Finance.
+
+Currently developing expertise in Data Analytics.
+
+Interested in transforming raw data into meaningful insights that support better business decisions.
+
+Technical Skills:
+
+Python – Data Analysis, Data Cleaning, Visualization.
+
+SQL – Database Management, Data Querying, Data Extraction.
+
+Microsoft Excel – Data Analysis, Advanced Formulas, Pivot Tables, Dashboards.
+
+Power BI – Interactive Dashboards, Data Visualization, Business Intelligence.
+
+Professional Goal:
+To become a skilled Data Analyst who combines management knowledge, financial understanding, and technical analytical skills to solve real-world business problems.
+
+2. Overall Design Direction
+
+Create a visually impressive, premium-quality website inspired by modern portfolios of top data analysts, software developers, and tech professionals.
+
+The design must feel:
+
+Professional and sophisticated.
+
+Modern and minimalistic.
+
+Premium and elegant.
+
+Technology-focused.
+
+Visually engaging without being cluttered.
+
+Preferred visual style:
+
+Dark theme as the primary design.
+
+Deep navy or almost-black background.
+
+Subtle blue, cyan, or purple accent colors.
+
+Beautiful gradients and glassmorphism effects.
+
+Smooth transitions and micro-interactions.
+
+Modern typography such as Inter, Sora, or Plus Jakarta Sans.
+
+Generous spacing and clean layouts.
+
+Avoid generic templates and outdated portfolio designs.
+
+3. Website Structure
+
+SECTION 1: Hero / Landing Page
+
+Create a powerful first impression.
+
+Display:
+
+MOHAMED AIT BOUALI
+
+Junior Data Analyst
+
+"Turning Data Into Insights, Insights Into Decisions."
+
+Supporting description:
+
+"Management graduate passionate about Data Analytics, business intelligence, and financial data. I use Python, SQL, Excel, and Power BI to transform complex data into clear, actionable insights."
+
+Include:
+
+A professional introduction.
+
+A prominent "Explore My Projects" button.
+
+A "Download CV" button.
+
+A "Let's Connect" button.
+
+LinkedIn profile icon and link.
+
+GitHub profile icon and link.
+
+An elegant animated data visualization on the right side.
+
+The hero visual could feature floating data charts, animated statistics, analytical graphs, or a sophisticated dashboard-inspired composition.
+
+SECTION 2: About Me
+
+Title: "A Little About Me"
+
+Write an engaging professional introduction explaining my background in Management and my transition toward Data Analytics.
+
+Highlight how my management education helps me understand business challenges, financial performance, and decision-making, while my technical skills allow me to analyze and interpret data.
+
+Include three small information cards:
+
+Management Background
+
+Data Analytics Specialization
+
+Business & Financial Analysis
+
+Use subtle animations when the section enters the viewport.
+
+SECTION 3: Technical Skills
+
+Title: "My Technical Toolkit"
+
+Create beautiful interactive skill cards for:
+
+Python
+
+Pandas
+
+NumPy
+
+Matplotlib
+
+Seaborn
+
+Data Cleaning
+
+Exploratory Data Analysis
+
+SQL
+
+Data Extraction
+
+Data Filtering
+
+Joins
+
+Aggregations
+
+Database Queries
+
+Microsoft Excel
+
+Advanced Formulas
+
+Pivot Tables
+
+Data Cleaning
+
+Data Visualization
+
+Interactive Dashboards
+
+Power BI
+
+Data Modeling
+
+Power Query
+
+DAX
+
+Interactive Dashboards
+
+Business Intelligence
+
+Use professional technology icons and attractive hover effects.
+
+Do not invent skill proficiency percentages or claim advanced expertise without evidence.
+
+SECTION 4: Featured Projects
+
+Title: "Turning Data Into Results"
+
+This is one of the most important sections of the website.
+
+Create a premium project showcase with large project cards, attractive thumbnails, descriptions, and technology tags.
+
+Each project card must contain:
+
+Project title.
+
+Project thumbnail or dashboard preview.
+
+Short project description.
+
+Business problem addressed.
+
+Tools and technologies used.
+
+Key insights or results.
+
+"View Project" button.
+
+GitHub repository link when available.
+
+Organize projects into categories:
+
+Python Projects
+
+SQL Projects
+
+Excel Dashboards
+
+Power BI Dashboards
+
+Financial & Business Analytics
+
+Include at least 6 project placeholders that I can edit and replace with my actual projects.
+
+Example project ideas:
+
+Sales Performance Analysis Using Python.
+
+Financial Performance Dashboard Using Power BI.
+
+Customer Segmentation Using SQL.
+
+Excel Business Intelligence Dashboard.
+
+Exploratory Data Analysis of E-commerce Data.
+
+Profitability and Revenue Analysis.
+
+IMPORTANT: These are examples, not completed projects. Never present them as real achievements unless I provide the actual project information.
+
+Allow visitors to click each project to access a dedicated project details page or an expanded project view.
+
+SECTION 5: Education
+
+Title: "Education & Academic Background"
+
+Create a professional timeline showing:
+
+Management Graduate
+Specialization: Management and Applied Finance.
+
+Include editable placeholders for:
+
+University name.
+
+Graduation year.
+
+Relevant academic subjects.
+
+Certifications and courses.
+
+SECTION 6: Certifications & Continuous Learning
+
+Create a dedicated section for professional certifications and courses.
+
+Include editable cards for:
+
+Python for Data Analysis.
+
+SQL for Data Analytics.
+
+Microsoft Excel.
+
+Power BI.
+
+Business Intelligence.
+
+Financial Analysis.
+
+Do not invent certification names, institutions, or awards.
+
+SECTION 7: GitHub & Professional Presence
+
+Title: "Explore My Work"
+
+Create elegant buttons and profile cards linking to:
+
+LinkedIn: [INSERT LINKEDIN PROFILE URL]
+
+GitHub: [INSERT GITHUB PROFILE URL]
+
+Email: [INSERT PROFESSIONAL EMAIL]
+
+Make the LinkedIn button particularly visible because building professional connections and attracting recruiters are important goals.
+
+SECTION 8: Contact Me
+
+Title: "Let's Work Together"
+
+Description:
+
+"Have a project, an opportunity, or simply want to connect? I'd love to hear from you."
+
+Include:
+
+Name field.
+
+Email field.
+
+Subject field.
+
+Message field.
+
+Send Message button.
+
+Professional email address.
+
+LinkedIn link.
+
+GitHub link.
+
+Make the contact form functional using an appropriate backend or email service. Do not create a fake submission experience.
+
+SECTION 9: Footer
+
+Include:
+
+MOHAMED AIT BOUALI.
+
+Junior Data Analyst.
+
+Quick navigation links.
+
+LinkedIn and GitHub icons.
+
+Copyright notice.
+
+Back-to-top functionality.
+
+4. Animations & Interactive Elements
+
+Make the website feel alive without sacrificing performance.
+
+Implement:
+
+Smooth scrolling.
+
+Animated hero introduction.
+
+Subtle background particles or floating data elements.
+
+Scroll-triggered reveal animations.
+
+Staggered project card animations.
+
+Smooth hover effects.
+
+Animated buttons.
+
+Interactive skill cards.
+
+Subtle gradient movement.
+
+Animated dashboard elements.
+
+A smooth page-loading transition.
+
+Responsive navigation menu.
+
+Use Framer Motion where appropriate.
+
+Animations must be elegant and professional, not distracting.
+
+5. Technical Requirements
+
+Preferred technology stack:
+
+React.js
+
+Vite
+
+Tailwind CSS
+
+Framer Motion
+
+Lucide React icons
+
+Recharts for data visualizations where appropriate.
+
+Requirements:
+
+Fully responsive on desktop, tablet, and mobile.
+
+Clean and reusable component architecture.
+
+Optimized loading performance.
+
+SEO-friendly structure.
+
+Accessible typography and color contrast.
+
+Functional navigation and buttons.
+
+Clean and maintainable code.
+
+No unnecessary dependencies.
+
+No broken links.
+
+No placeholder buttons that pretend to work.
+
+6. Personal Branding
+
+The website must communicate three things immediately:
+
+I have an academic background in Management.
+
+I specialize in Data Analytics and have knowledge of Python, SQL, Excel, and Power BI.
+
+I can connect technical data analysis with real business and financial problems.
+
+Position me as an ambitious emerging Data Analyst with a business-oriented mindset.
+
+Do not make me look like an experienced senior data scientist or an artificial intelligence engineer.
+
+Keep the language professional, confident, and authentic.
+
+7. Final Quality Requirements
+
+Before finishing:
+
+Check every section.
+
+Test all navigation links.
+
+Verify responsiveness.
+
+Verify animations.
+
+Check mobile layout.
+
+Ensure the LinkedIn and GitHub links are easy to update.
+
+Ensure all project cards are editable.
+
+Ensure the website can be deployed easily using Vercel or Netlify.
+
+Do not stop after generating a basic landing page.
+
+Build the complete portfolio website with all sections, polished design, animations, and working interactions.
+
+The final result should look like a premium portfolio designed by an experienced professional web design agency.
+
+The most important objective: When a recruiter visits this website, they should immediately understand who I am, what I can do, what projects I have completed, and why I could be a valuable addition to their team.

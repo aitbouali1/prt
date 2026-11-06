@@ -1,0 +1,287 @@
+import { useState } from "react"
+import { motion, AnimatePresence } from "framer-motion"
+import { ArrowUpRight, X, Target, Lightbulb, FolderOpen } from "lucide-react"
+import { Github } from "./BrandIcons"
+import SectionHeading from "./SectionHeading"
+import { projects, projectCategories } from "../data/projects"
+import { profile } from "../data/profile"
+import { container, item } from "../lib/motion"
+
+function Thumbnail({ project }) {
+  if (project.image) {
+    return (
+      <img
+        src={project.image}
+        alt={project.title}
+        className="h-full w-full object-cover"
+        loading="lazy"
+      />
+    )
+  }
+  return (
+    <div className="relative flex h-full w-full items-center justify-center bg-[linear-gradient(135deg,rgba(99,102,241,0.18),rgba(34,211,238,0.12),rgba(167,139,250,0.18))]">
+      <svg viewBox="0 0 200 100" className="h-3/5 w-3/5 opacity-70" preserveAspectRatio="none">
+        <polyline
+          points="10,80 40,55 70,62 100,30 130,40 160,18 190,25"
+          fill="none"
+          stroke="#22d3ee"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+        />
+        <polyline
+          points="10,90 40,75 70,80 100,55 130,62 160,45 190,50"
+          fill="none"
+          stroke="#6366f1"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeDasharray="4 4"
+        />
+      </svg>
+      {project.placeholder && (
+        <span className="absolute right-3 top-3 rounded-md bg-black/40 px-2 py-1 text-[10px] font-semibold uppercase tracking-wider text-[color:var(--color-accent-2)] backdrop-blur">
+          Sample
+        </span>
+      )}
+    </div>
+  )
+}
+
+function ProjectCard({ project, onOpen }) {
+  return (
+    <motion.article
+      layout
+      variants={item}
+      whileHover={{ y: -6 }}
+      className="glass-card glow-ring group flex flex-col overflow-hidden rounded-2xl"
+    >
+      <div className="relative aspect-[16/10] overflow-hidden">
+        <div className="h-full w-full transition-transform duration-500 group-hover:scale-105">
+          <Thumbnail project={project} />
+        </div>
+        <span className="absolute left-3 top-3 rounded-md bg-black/40 px-2.5 py-1 text-[11px] font-semibold text-text backdrop-blur">
+          {project.category}
+        </span>
+      </div>
+
+      <div className="flex flex-1 flex-col gap-4 p-6">
+        <h3 className="font-[family-name:var(--font-display)] text-lg font-bold leading-snug text-text">
+          {project.title}
+        </h3>
+        <p className="text-sm leading-relaxed text-muted">{project.description}</p>
+
+        <div className="flex flex-wrap gap-2">
+          {project.tags.map((t) => (
+            <span
+              key={t}
+              className="rounded-md bg-white/5 px-2.5 py-1 text-[11px] font-medium text-[color:var(--color-accent-3)]"
+            >
+              {t}
+            </span>
+          ))}
+        </div>
+
+        <div className="mt-auto flex items-center gap-2 pt-2">
+          <button
+            onClick={() => onOpen(project)}
+            className="inline-flex items-center gap-1.5 rounded-lg bg-gradient-to-r from-[color:var(--color-accent)] to-[color:var(--color-accent-3)] px-4 py-2 text-xs font-semibold text-white transition-transform hover:scale-105"
+          >
+            View Project <ArrowUpRight className="h-3.5 w-3.5" />
+          </button>
+          {project.repo && (
+            <a
+              href={project.repo}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="GitHub repository"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-lg glass text-muted transition-colors hover:text-text"
+            >
+              <Github className="h-4 w-4" />
+            </a>
+          )}
+        </div>
+      </div>
+    </motion.article>
+  )
+}
+
+function ProjectModal({ project, onClose }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      onClick={onClose}
+      className="fixed inset-0 z-[90] flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm"
+    >
+      <motion.div
+        initial={{ opacity: 0, scale: 0.92, y: 24 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.92, y: 24 }}
+        transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+        onClick={(e) => e.stopPropagation()}
+        className="glass-card relative max-h-[88vh] w-full max-w-2xl overflow-y-auto rounded-2xl p-6 sm:p-8"
+      >
+        <button
+          onClick={onClose}
+          aria-label="Close"
+          className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-lg glass text-muted transition-colors hover:text-text"
+        >
+          <X className="h-4 w-4" />
+        </button>
+
+        <div className="aspect-[16/9] overflow-hidden rounded-xl">
+          <Thumbnail project={project} />
+        </div>
+
+        <div className="mt-6 flex flex-col gap-5">
+          <div className="flex flex-wrap items-center gap-3">
+            <span className="rounded-md bg-white/5 px-2.5 py-1 text-[11px] font-semibold text-[color:var(--color-accent-3)]">
+              {project.category}
+            </span>
+            {project.placeholder && (
+              <span className="rounded-md bg-amber-400/10 px-2.5 py-1 text-[11px] font-semibold text-amber-300">
+                Sample concept — replace with your real project
+              </span>
+            )}
+          </div>
+
+          <h3 className="font-[family-name:var(--font-display)] text-2xl font-bold text-text">
+            {project.title}
+          </h3>
+          <p className="leading-relaxed text-muted">{project.description}</p>
+
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div className="glass rounded-xl p-4">
+              <p className="mb-2 flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[color:var(--color-accent-2)]">
+                <Target className="h-4 w-4" /> Business problem
+              </p>
+              <p className="text-sm leading-relaxed text-muted">{project.problem}</p>
+            </div>
+            <div className="glass rounded-xl p-4">
+              <p className="mb-2 flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[color:var(--color-accent-3)]">
+                <Lightbulb className="h-4 w-4" /> Key insights / results
+              </p>
+              <p className="text-sm leading-relaxed text-muted">{project.insights}</p>
+            </div>
+          </div>
+
+          <div>
+            <p className="mb-2 text-xs font-bold uppercase tracking-wider text-muted">
+              Tools & technologies
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {project.tags.map((t) => (
+                <span
+                  key={t}
+                  className="rounded-md bg-white/5 px-3 py-1 text-xs font-medium text-text"
+                >
+                  {t}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-3 pt-2">
+            <a
+              href="#contact"
+              onClick={onClose}
+              className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-[color:var(--color-accent)] to-[color:var(--color-accent-3)] px-5 py-2.5 text-sm font-semibold text-white transition-transform hover:scale-105"
+            >
+              Ask about this project
+            </a>
+            {project.repo ? (
+              <a
+                href={project.repo}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-lg glass px-5 py-2.5 text-sm font-semibold text-text transition-colors hover:text-[color:var(--color-accent-2)]"
+              >
+                <Github className="h-4 w-4" /> View on GitHub
+              </a>
+            ) : (
+              <a
+                href={profile.github}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-lg glass px-5 py-2.5 text-sm font-semibold text-text transition-colors hover:text-[color:var(--color-accent-2)]"
+              >
+                <Github className="h-4 w-4" /> See more on GitHub
+              </a>
+            )}
+          </div>
+        </div>
+      </motion.div>
+    </motion.div>
+  )
+}
+
+export default function Projects() {
+  const [filter, setFilter] = useState("All")
+  const [active, setActive] = useState(null)
+
+  const filtered =
+    filter === "All"
+      ? projects
+      : projects.filter((p) => p.category === filter)
+
+  return (
+    <section id="projects" className="relative py-24 sm:py-32">
+      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+        <SectionHeading
+          eyebrow="Projects"
+          title="Turning Data Into Results"
+          subtitle="A showcase of the kinds of projects I build across Python, SQL, Excel, and Power BI. Replace these samples with your real work."
+        />
+
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.3 }}
+          className="mt-12 flex flex-wrap justify-center gap-2.5"
+        >
+          {projectCategories.map((cat) => (
+            <motion.button
+              key={cat}
+              variants={item}
+              onClick={() => setFilter(cat)}
+              className={`rounded-full px-4 py-2 text-sm font-semibold transition-all ${
+                filter === cat
+                  ? "bg-gradient-to-r from-[color:var(--color-accent)] to-[color:var(--color-accent-3)] text-white shadow-glow"
+                  : "glass text-muted hover:text-text"
+              }`}
+            >
+              {cat}
+            </motion.button>
+          ))}
+        </motion.div>
+
+        <motion.div
+          layout
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.1 }}
+          className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+        >
+          <AnimatePresence mode="popLayout">
+            {filtered.map((p) => (
+              <ProjectCard key={p.id} project={p} onOpen={setActive} />
+            ))}
+          </AnimatePresence>
+        </motion.div>
+
+        {filtered.length === 0 && (
+          <div className="mt-10 flex flex-col items-center gap-3 text-muted">
+            <FolderOpen className="h-10 w-10 opacity-50" />
+            <p>No projects in this category yet.</p>
+          </div>
+        )}
+      </div>
+
+      <AnimatePresence>
+        {active && <ProjectModal project={active} onClose={() => setActive(null)} />}
+      </AnimatePresence>
+    </section>
+  )
+}

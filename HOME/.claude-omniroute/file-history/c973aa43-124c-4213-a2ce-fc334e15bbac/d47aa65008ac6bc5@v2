@@ -1,0 +1,9 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# SPA-friendly redirects so deep links and 404s fall back to the app.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
